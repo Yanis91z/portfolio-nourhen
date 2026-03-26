@@ -5,10 +5,10 @@ export class About {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: 'Nourhen Ghlissi' })
+  @Column({ default: '' })
   name: string;
 
-  @Column({ default: 'Étudiante Marketing Digital à la recherche d\'une alternance' })
+  @Column({ default: '' })
   title: string;
 
   @Column({ type: 'text', default: '' })
