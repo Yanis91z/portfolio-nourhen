@@ -174,7 +174,7 @@ export default function HomePage() {
                     <img
                       src={about.photoUrl.startsWith('http') ? about.photoUrl : `${process.env.NEXT_PUBLIC_API_URL}${about.photoUrl}`}
                       alt={about.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div
