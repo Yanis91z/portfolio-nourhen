@@ -120,22 +120,32 @@ export default function HomePage() {
               animate="visible"
               className="relative z-10 flex justify-center"
             >
-              {about?.photoUrl ? (
-                <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden border-2 border-card-border">
-                  <img
-                    src={about.photoUrl.startsWith('http') ? about.photoUrl : `${process.env.NEXT_PUBLIC_API_URL}${about.photoUrl}`}
-                    alt={about.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ) : (
+              <div className="relative group">
                 <div
-                  className="w-72 h-72 md:w-96 md:h-96 rounded-2xl flex items-center justify-center text-6xl font-bold text-white"
+                  className="absolute -inset-2 rounded-3xl opacity-60 blur-xl group-hover:opacity-100 transition-opacity duration-500"
                   style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
-                >
-                  {(about?.name || 'N').charAt(0)}
-                </div>
-              )}
+                />
+                <div
+                  className="absolute -inset-1 rounded-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-500"
+                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
+                />
+                {about?.photoUrl ? (
+                  <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden ring-2 ring-white/10">
+                    <img
+                      src={about.photoUrl.startsWith('http') ? about.photoUrl : `${process.env.NEXT_PUBLIC_API_URL}${about.photoUrl}`}
+                      alt={about.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl flex items-center justify-center text-6xl font-bold text-white"
+                    style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
+                  >
+                    {(about?.name || 'N').charAt(0)}
+                  </div>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>
