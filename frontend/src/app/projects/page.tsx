@@ -92,10 +92,26 @@ export default function ProjectsPage() {
 
                       <div className="flex gap-3 pt-2">
                         {project.githubUrl && (
-                          <GitFork size={16} className="text-muted" />
+                          <a
+                            href={project.githubUrl.match(/^https?:\/\//) ? project.githubUrl : `https://${project.githubUrl}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="text-muted hover:text-[var(--color-primary)] transition-colors"
+                          >
+                            <GitFork size={16} />
+                          </a>
                         )}
                         {project.demoUrl && (
-                          <ExternalLink size={16} className="text-muted" />
+                          <a
+                            href={project.demoUrl.match(/^https?:\/\//) ? project.demoUrl : `https://${project.demoUrl}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="text-muted hover:text-[var(--color-primary)] transition-colors"
+                          >
+                            <ExternalLink size={16} />
+                          </a>
                         )}
                       </div>
                     </div>

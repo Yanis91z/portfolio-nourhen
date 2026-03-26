@@ -175,7 +175,7 @@ export default function AdminProjectsPage() {
                   <input
                     value={techInput}
                     onChange={(e) => setTechInput(e.target.value)}
-                    placeholder="React, Node.js, PostgreSQL"
+                    placeholder="Adobe Illustrator, Canva, Photoshop, Premiere Pro"
                     className="w-full px-4 py-3 rounded-xl bg-card border border-card-border focus:border-[var(--color-primary)] focus:outline-none text-foreground"
                   />
                 </div>

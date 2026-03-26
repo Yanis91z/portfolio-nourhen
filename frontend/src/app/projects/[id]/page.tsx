@@ -72,7 +72,7 @@ export default function ProjectDetailPage() {
           <div className="flex gap-4 mb-8">
             {project.githubUrl && (
               <a
-                href={project.githubUrl}
+                href={project.githubUrl.match(/^https?:\/\//) ? project.githubUrl : `https://${project.githubUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-card-border hover:bg-card transition-colors"
@@ -82,7 +82,7 @@ export default function ProjectDetailPage() {
             )}
             {project.demoUrl && (
               <a
-                href={project.demoUrl}
+                href={project.demoUrl.match(/^https?:\/\//) ? project.demoUrl : `https://${project.demoUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-transform hover:scale-105"
