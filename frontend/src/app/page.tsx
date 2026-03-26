@@ -120,31 +120,71 @@ export default function HomePage() {
               animate="visible"
               className="relative z-10 flex justify-center"
             >
-              <div className="relative group">
-                <div
-                  className="absolute -inset-2 rounded-3xl opacity-60 blur-xl group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
+              <div className="relative group w-72 h-72 md:w-96 md:h-96">
+                <motion.div
+                  className="absolute -inset-3 opacity-60 blur-2xl group-hover:opacity-100 transition-opacity duration-700"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
+                    borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+                  }}
+                  animate={{
+                    borderRadius: [
+                      '60% 40% 30% 70% / 60% 30% 70% 40%',
+                      '30% 60% 70% 40% / 50% 60% 30% 60%',
+                      '50% 50% 40% 60% / 40% 70% 50% 50%',
+                      '60% 40% 30% 70% / 60% 30% 70% 40%',
+                    ],
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                 />
-                <div
-                  className="absolute -inset-1 rounded-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-500"
-                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
+
+                <motion.div
+                  className="absolute -inset-[3px]"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
+                    borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+                  }}
+                  animate={{
+                    borderRadius: [
+                      '60% 40% 30% 70% / 60% 30% 70% 40%',
+                      '30% 60% 70% 40% / 50% 60% 30% 60%',
+                      '50% 50% 40% 60% / 40% 70% 50% 50%',
+                      '60% 40% 30% 70% / 60% 30% 70% 40%',
+                    ],
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                 />
-                {about?.photoUrl ? (
-                  <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden ring-2 ring-white/10">
+
+                <motion.div
+                  className="relative w-full h-full overflow-hidden"
+                  style={{
+                    borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+                  }}
+                  animate={{
+                    borderRadius: [
+                      '60% 40% 30% 70% / 60% 30% 70% 40%',
+                      '30% 60% 70% 40% / 50% 60% 30% 60%',
+                      '50% 50% 40% 60% / 40% 70% 50% 50%',
+                      '60% 40% 30% 70% / 60% 30% 70% 40%',
+                    ],
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  {about?.photoUrl ? (
                     <img
                       src={about.photoUrl.startsWith('http') ? about.photoUrl : `${process.env.NEXT_PUBLIC_API_URL}${about.photoUrl}`}
                       alt={about.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                  </div>
-                ) : (
-                  <div
-                    className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl flex items-center justify-center text-6xl font-bold text-white"
-                    style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
-                  >
-                    {(about?.name || 'N').charAt(0)}
-                  </div>
-                )}
+                  ) : (
+                    <div
+                      className="w-full h-full flex items-center justify-center text-6xl font-bold text-white"
+                      style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
+                    >
+                      {(about?.name || 'N').charAt(0)}
+                    </div>
+                  )}
+                </motion.div>
               </div>
             </motion.div>
           </div>
