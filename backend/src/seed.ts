@@ -31,8 +31,8 @@ async function seed() {
   if (aboutRows.length === 0) {
     await aboutRepo.save({
       name: 'Nourhen',
-      title: 'Étudiante en Communication & Marketing',
-      description: 'Étudiante en L3 Communication et Marketing, passionnée par la stratégie digitale, la création de contenu et le branding.',
+      title: 'Étudiante Marketing Digital à la recherche d\'une alternance',
+      description: 'Étudiante en Marketing Digital, passionnée par la stratégie digitale, la création de contenu et le branding.',
     });
     console.log('Default about created');
   }

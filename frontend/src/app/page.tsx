@@ -77,7 +77,7 @@ export default function HomePage() {
               >
                 {about?.name || 'Nourhen'}
                 <br />
-                <span className="gradient-text">{about?.title || 'Communication & Marketing'}</span>
+                <span className="gradient-text">{about?.title || 'Marketing Digital'}</span>
               </motion.h1>
 
               <motion.p
@@ -87,7 +87,7 @@ export default function HomePage() {
                 animate="visible"
                 className="text-lg text-muted max-w-lg leading-relaxed"
               >
-                {about?.description || 'Étudiante en L3 Communication et Marketing, passionnée par la stratégie digitale et la création de contenu.'}
+                {about?.description || 'Étudiante en Marketing Digital, passionnée par la stratégie digitale et la création de contenu.'}
               </motion.p>
 
               <motion.div
