@@ -29,7 +29,22 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var t = JSON.parse(localStorage.getItem('theme-settings') || '{}');
+                if (t.primaryColor) document.documentElement.style.setProperty('--color-primary', t.primaryColor);
+                if (t.secondaryColor) document.documentElement.style.setProperty('--color-secondary', t.secondaryColor);
+                if (t.themeMode === 'light') document.documentElement.classList.add('light');
+              } catch(e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <Navbar />
