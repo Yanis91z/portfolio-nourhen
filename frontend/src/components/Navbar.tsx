@@ -52,7 +52,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass overflow-hidden"
+            className="md:hidden bg-background border-b border-card-border overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {links.map((link) => (
