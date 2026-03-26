@@ -54,8 +54,8 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                <Link href={`/projects/${project.id}`}>
-                  <div className="group rounded-2xl bg-card border border-card-border overflow-hidden transition-all duration-300 hover:border-[var(--color-primary)] hover:-translate-y-2 hover:shadow-lg hover:shadow-[var(--color-primary)]/10">
+                <Link href={`/projects/${project.id}`} className="h-full">
+                  <div className="group rounded-2xl bg-card border border-card-border overflow-hidden transition-all duration-300 hover:border-[var(--color-primary)] hover:-translate-y-2 hover:shadow-lg hover:shadow-[var(--color-primary)]/10 h-full flex flex-col">
                     <div className="h-48 overflow-hidden bg-card-border">
                       {project.imageUrl ? (
                         <img
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
                       )}
                     </div>
 
-                    <div className="p-6 space-y-3">
+                    <div className="p-6 space-y-3 flex flex-col flex-1">
                       <h3 className="text-xl font-semibold group-hover:text-[var(--color-primary)] transition-colors">
                         {project.title}
                       </h3>
@@ -92,7 +92,7 @@ export default function ProjectsPage() {
                         </div>
                       )}
 
-                      <div className="flex gap-3 pt-2">
+                      <div className="flex gap-3 pt-2 mt-auto">
                         {project.githubUrl && (
                           <a
                             href={project.githubUrl.match(/^https?:\/\//) ? project.githubUrl : `https://${project.githubUrl}`}
