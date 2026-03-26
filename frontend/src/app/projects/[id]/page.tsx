@@ -57,6 +57,10 @@ export default function ProjectDetailPage() {
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.title}</h1>
 
+          {project.shortDescription && (
+            <p className="text-lg text-muted mb-6 leading-relaxed">{project.shortDescription}</p>
+          )}
+
           {project.techStack && project.techStack.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
               {project.techStack.map((tech) => (
