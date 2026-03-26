@@ -1,4 +1,4 @@
-# Portfolio Développeur Full Stack
+# Portfolio
 
 Portfolio moderne et administrable construit avec Next.js, NestJS et PostgreSQL.
 

@@ -9,14 +9,14 @@ export class AboutService {
   constructor(
     @InjectRepository(About)
     private repo: Repository<About>,
-  ) {}
+  ) { }
 
   async get(): Promise<About> {
     const rows = await this.repo.find();
     if (rows.length === 0) {
       const about = this.repo.create({
-        name: 'Nourhen',
-        title: 'Développeur Full Stack',
+        name: 'Nourhen Ghlissi',
+        title: 'Étudiante Marketing Digital à la recherche d\'une alternance',
         description: '',
       });
       return this.repo.save(about);
