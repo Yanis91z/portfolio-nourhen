@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, GitFork, ExternalLink } from 'lucide-react';
 import { getProject, Project } from '@/lib/api';
+import AnimatedBlobs from '@/components/AnimatedBlobs';
 
 const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
@@ -34,8 +35,9 @@ export default function ProjectDetailPage() {
   if (!project) return null;
 
   return (
-    <section className="py-12">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="py-12 relative">
+      <AnimatedBlobs />
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <button
             onClick={() => router.push('/projects')}
