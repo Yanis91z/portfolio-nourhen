@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { getVideos, Video } from '@/lib/api';
+import AnimatedBlobs from '@/components/AnimatedBlobs';
 
 const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
@@ -81,8 +82,9 @@ export default function VideosPage() {
   }, []);
 
   return (
-    <section className="py-12">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-12 relative">
+      <AnimatedBlobs />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
