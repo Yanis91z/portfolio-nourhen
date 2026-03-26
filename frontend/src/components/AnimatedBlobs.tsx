@@ -31,7 +31,7 @@ export default function AnimatedBlobs() {
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -bottom-10 -left-10 w-[200px] h-[200px] md:-bottom-32 md:-left-20 md:w-[450px] md:h-[450px] opacity-[0.08]"
+        className="absolute bottom-20 left-0 w-[200px] h-[200px] md:-bottom-32 md:-left-20 md:w-[450px] md:h-[450px] opacity-[0.08]"
         style={{
           background: 'linear-gradient(225deg, var(--color-secondary), var(--color-primary))',
           borderRadius: blobShapes2[0],
@@ -50,7 +50,7 @@ export default function AnimatedBlobs() {
         transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
       />
       <motion.div
-        className="absolute bottom-44 left-12 w-8 h-8 md:bottom-32 md:left-8 md:w-14 md:h-14 border-2 border-[var(--color-secondary)]/20"
+        className="absolute bottom-52 left-16 w-8 h-8 md:bottom-32 md:left-8 md:w-14 md:h-14 border-2 border-[var(--color-secondary)]/20"
         style={{ borderRadius: blobShapes2[0] }}
         animate={{
           borderRadius: blobShapes2,
