@@ -39,9 +39,10 @@ export default function ProjectDetailPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <button
             onClick={() => router.push('/projects')}
-            className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors mb-8"
+            className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-card-border bg-card/50 backdrop-blur-sm text-sm font-medium text-muted hover:text-foreground hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-primary)]/5 transition-all duration-300 mb-8"
           >
-            <ArrowLeft size={18} /> Retour aux réalisations
+            <ArrowLeft size={16} className="transition-transform duration-300 group-hover:-translate-x-1" />
+            Retour aux réalisations
           </button>
 
           {project.imageUrl && (
