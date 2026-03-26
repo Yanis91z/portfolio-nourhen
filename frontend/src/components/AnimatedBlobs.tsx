@@ -22,7 +22,7 @@ export default function AnimatedBlobs() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: -1 }}>
       <motion.div
-        className="absolute -top-20 -right-20 w-[500px] h-[500px] opacity-[0.08]"
+        className="absolute -top-20 -right-20 w-[250px] h-[250px] md:w-[500px] md:h-[500px] opacity-[0.08]"
         style={{
           background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
           borderRadius: blobShapes[0],
@@ -31,7 +31,7 @@ export default function AnimatedBlobs() {
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -bottom-32 -left-20 w-[450px] h-[450px] opacity-[0.08]"
+        className="absolute -bottom-32 -left-20 w-[200px] h-[200px] md:w-[450px] md:h-[450px] opacity-[0.08]"
         style={{
           background: 'linear-gradient(225deg, var(--color-secondary), var(--color-primary))',
           borderRadius: blobShapes2[0],
@@ -41,7 +41,7 @@ export default function AnimatedBlobs() {
       />
 
       <motion.div
-        className="absolute top-24 right-12 w-20 h-20 border-2 border-[var(--color-primary)]/20"
+        className="absolute top-24 right-12 w-10 h-10 md:w-20 md:h-20 border-2 border-[var(--color-primary)]/20"
         style={{ borderRadius: blobShapes[0] }}
         animate={{
           borderRadius: blobShapes,
@@ -50,7 +50,7 @@ export default function AnimatedBlobs() {
         transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
       />
       <motion.div
-        className="absolute bottom-32 left-8 w-14 h-14 border-2 border-[var(--color-secondary)]/20"
+        className="absolute bottom-32 left-8 w-8 h-8 md:w-14 md:h-14 border-2 border-[var(--color-secondary)]/20"
         style={{ borderRadius: blobShapes2[0] }}
         animate={{
           borderRadius: blobShapes2,
@@ -60,17 +60,17 @@ export default function AnimatedBlobs() {
       />
 
       <motion.div
-        className="absolute top-1/3 left-6 w-3 h-3 rounded-full bg-[var(--color-primary)]/30"
+        className="absolute top-1/3 left-6 w-2 h-2 md:w-3 md:h-3 rounded-full bg-[var(--color-primary)]/30"
         animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute top-1/2 right-10 w-2 h-2 rounded-full bg-[var(--color-secondary)]/30"
+        className="absolute top-1/2 right-10 w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--color-secondary)]/30"
         animate={{ y: [0, -15, 0], opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]/25"
+        className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full bg-[var(--color-primary)]/25"
         animate={{ y: [0, -25, 0], opacity: [0.25, 0.5, 0.25] }}
         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
       />
