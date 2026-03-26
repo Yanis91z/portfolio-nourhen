@@ -20,7 +20,7 @@ const blobShapes2 = [
 
 export default function AnimatedBlobs() {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: -1 }}>
       <motion.div
         className="absolute -top-20 -right-20 w-[500px] h-[500px] opacity-[0.08]"
         style={{
