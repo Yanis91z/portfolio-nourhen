@@ -47,7 +47,7 @@ export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    getAbout().then(setAbout).catch(() => {});
+    getAbout().then(setAbout).catch(() => { });
   }, []);
 
   return (
@@ -75,7 +75,7 @@ export default function HomePage() {
                 animate="visible"
                 className="text-5xl md:text-7xl font-bold leading-tight"
               >
-                {about?.name || 'Nourhen'}
+                {about?.name || 'Nourhen Ghlissi'}
                 <br />
                 <span className="gradient-text">{about?.title || 'Marketing Digital'}</span>
               </motion.h1>

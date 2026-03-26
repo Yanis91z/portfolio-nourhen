@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nourhen | Communication & Marketing",
-  description: "Portfolio de Nourhen - Étudiante en L3 Communication et Marketing. Réalisations, compétences et contact.",
+  title: "Nourhen Ghlissi | Communication & Marketing",
+  description: "Portfolio de Nourhen Ghlissi - Étudiante en L3 Communication et Marketing. Réalisations, compétences et contact.",
 };
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Réalisations | Nourhen",
+  title: "Réalisations | Nourhen Ghlissi",
   description: "Découvrez mes réalisations en communication et marketing - campagnes, branding, stratégie digitale",
 };
 

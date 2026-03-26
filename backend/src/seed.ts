@@ -30,8 +30,8 @@ async function seed() {
   const aboutRows = await aboutRepo.find();
   if (aboutRows.length === 0) {
     await aboutRepo.save({
-      name: 'Nourhen',
-      title: 'Étudiante Marketing Digital - Recherche alternance',
+      name: 'Nourhen Ghlissi',
+      title: 'Étudiante Marketing Digital à la recherche d\'une alternance',
       description: 'Étudiante en Marketing Digital, passionnée par la stratégie digitale, la création de contenu et le branding.',
     });
     console.log('Default about created');

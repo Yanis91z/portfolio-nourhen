@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vidéos | Nourhen",
+  title: "Vidéos | Nourhen Ghlissi",
   description: "Mes vidéos et créations de contenu - communication, marketing et storytelling",
 };
 
