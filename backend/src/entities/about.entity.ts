@@ -8,7 +8,7 @@ export class About {
   @Column({ default: 'Nourhen' })
   name: string;
 
-  @Column({ default: 'Étudiante Marketing Digital à la recherche d\'une alternance' })
+  @Column({ default: 'Étudiante Marketing Digital' })
   title: string;
 
   @Column({ type: 'text', default: '' })
