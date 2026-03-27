@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { Send, CheckCircle, AlertCircle, Mail, User, MessageSquare } from 'lucide-react';
 import { sendMessage } from '@/lib/api';
+import AnimatedBlobs from '@/components/AnimatedBlobs';
 
 interface ContactForm {
   name: string;
@@ -29,8 +30,9 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="py-12">
-      <div className="max-w-2xl mx-auto px-6">
+    <section className="py-12 relative">
+      <AnimatedBlobs />
+      <div className="max-w-2xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
