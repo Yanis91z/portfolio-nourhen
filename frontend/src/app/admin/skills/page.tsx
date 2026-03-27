@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Pencil, Trash2, X, Save, Loader2 } from 'lucide-react';
 import { getSkills, createSkill, updateSkill, deleteSkill, Skill } from '@/lib/api';
+import FileUpload from '@/components/FileUpload';
 
-type Draft = { id?: number; name: string; level: number };
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+type Draft = { id?: number; name: string; level: number; logoUrl: string };
 
 export default function AdminSkillsPage() {
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -17,18 +20,20 @@ export default function AdminSkillsPage() {
     load();
   }, []);
 
-  const openNew = () => setDraft({ name: '', level: 50 });
-  const openEdit = (s: Skill) => setDraft({ id: s.id, name: s.name, level: s.level });
+  const openNew = () => setDraft({ name: '', level: 50, logoUrl: '' });
+  const openEdit = (s: Skill) =>
+    setDraft({ id: s.id, name: s.name, level: s.level, logoUrl: s.logoUrl ?? '' });
   const closeDraft = () => setDraft(null);
 
   const saveDraft = async () => {
     if (!draft || !draft.name.trim()) return;
     setSaving(true);
     try {
+      const logoUrl = draft.logoUrl.trim() || null;
       if (draft.id != null) {
-        await updateSkill(draft.id, { name: draft.name.trim(), level: draft.level });
+        await updateSkill(draft.id, { name: draft.name.trim(), level: draft.level, logoUrl });
       } else {
-        await createSkill({ name: draft.name.trim(), level: draft.level });
+        await createSkill({ name: draft.name.trim(), level: draft.level, logoUrl });
       }
       closeDraft();
       await load();
@@ -111,6 +116,15 @@ export default function AdminSkillsPage() {
                   className="w-full accent-[var(--color-primary)]"
                 />
               </div>
+              <FileUpload
+                label="Logo (optionnel)"
+                value={draft?.logoUrl}
+                onChange={(url) => setDraft((d) => (d ? { ...d, logoUrl: url } : d))}
+                accept="image/*"
+              />
+              <p className="text-xs text-muted">
+                Sans logo, la première lettre du nom s’affiche sur le site public.
+              </p>
               <div className="flex flex-wrap gap-3">
                 <button
                   type="button"
@@ -142,6 +156,30 @@ export default function AdminSkillsPage() {
             layout
             className="flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-2xl bg-card border border-card-border hover:border-[var(--color-primary)]/25 transition-colors"
           >
+            <div className="flex items-center gap-3 shrink-0">
+              {skill.logoUrl ? (
+                <div className="w-12 h-12 rounded-xl overflow-hidden border border-card-border bg-background p-1.5">
+                  <img
+                    src={
+                      skill.logoUrl.startsWith('http')
+                        ? skill.logoUrl
+                        : `${API_BASE}${skill.logoUrl}`
+                    }
+                    alt=""
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              ) : (
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-sm font-bold text-white"
+                  style={{
+                    background: 'linear-gradient(145deg, var(--color-primary), var(--color-secondary))',
+                  }}
+                >
+                  {skill.name.trim().charAt(0).toUpperCase() || '?'}
+                </div>
+              )}
+            </div>
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-lg truncate">{skill.name}</p>
               <div className="mt-3 flex items-center gap-3">

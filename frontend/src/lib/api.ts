@@ -40,6 +40,7 @@ export interface Skill {
   id: number;
   name: string;
   level: number;
+  logoUrl: string | null;
 }
 
 export interface Video {

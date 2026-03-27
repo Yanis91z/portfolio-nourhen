@@ -23,13 +23,21 @@ export class SkillsService {
   }
 
   create(dto: CreateSkillDto): Promise<Skill> {
-    const skill = this.repo.create(dto);
+    const skill = this.repo.create({
+      name: dto.name,
+      level: dto.level,
+      logoUrl: dto.logoUrl ?? null,
+    });
     return this.repo.save(skill);
   }
 
   async update(id: number, dto: UpdateSkillDto): Promise<Skill> {
     await this.findOne(id);
-    await this.repo.update(id, dto);
+    const patch: Partial<Skill> = {};
+    if (dto.name !== undefined) patch.name = dto.name;
+    if (dto.level !== undefined) patch.level = dto.level;
+    if (dto.logoUrl !== undefined) patch.logoUrl = dto.logoUrl ?? null;
+    await this.repo.update(id, patch);
     return this.findOne(id);
   }
 

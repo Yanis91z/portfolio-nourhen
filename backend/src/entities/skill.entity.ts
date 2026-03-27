@@ -10,4 +10,7 @@ export class Skill {
 
   @Column({ type: 'int', default: 50 })
   level: number;
+
+  @Column({ type: 'varchar', nullable: true })
+  logoUrl: string | null;
 }

@@ -5,6 +5,14 @@ import { motion } from 'framer-motion';
 import { getSkills, Skill } from '@/lib/api';
 import AnimatedBlobs from '@/components/AnimatedBlobs';
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+function skillLogoSrc(skill: Skill): string | null {
+  const url = skill.logoUrl?.trim();
+  if (!url) return null;
+  return url.startsWith('http') ? url : `${API_BASE}${url}`;
+}
+
 function levelLabel(level: number): string {
   if (level <= 40) return 'En découverte';
   if (level <= 70) return 'À l’aise';
@@ -59,6 +67,7 @@ export default function SkillsPage() {
           <ul className="grid sm:grid-cols-2 gap-5 md:gap-6">
             {sorted.map((skill, i) => {
               const initial = skill.name.trim().charAt(0).toUpperCase() || '?';
+              const logoSrc = skillLogoSrc(skill);
               return (
                 <motion.li
                   key={skill.id}
@@ -70,15 +79,25 @@ export default function SkillsPage() {
                 >
                   <div className="relative h-full rounded-2xl p-6 md:p-7 overflow-hidden border border-card-border bg-card/60 backdrop-blur-sm transition-all duration-300 group-hover:border-[color-mix(in_srgb,var(--color-primary)_45%,var(--card-border))] group-hover:shadow-[0_20px_50px_-20px_color-mix(in_srgb,var(--color-primary)_35%,transparent)]">
                     <div className="relative flex gap-5">
-                      <div
-                        className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-xl md:text-2xl font-bold text-white shadow-lg ring-2 ring-white/15"
-                        style={{
-                          background: `linear-gradient(145deg, var(--color-primary), var(--color-secondary))`,
-                          boxShadow: `0 8px 32px color-mix(in srgb, var(--color-primary) 35%, transparent)`,
-                        }}
-                      >
-                        {initial}
-                      </div>
+                      {logoSrc ? (
+                        <div className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-2xl overflow-hidden border border-card-border bg-background/80 p-2 shadow-lg ring-2 ring-white/10">
+                          <img
+                            src={logoSrc}
+                            alt=""
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-xl md:text-2xl font-bold text-white shadow-lg ring-2 ring-white/15"
+                          style={{
+                            background: `linear-gradient(145deg, var(--color-primary), var(--color-secondary))`,
+                            boxShadow: `0 8px 32px color-mix(in srgb, var(--color-primary) 35%, transparent)`,
+                          }}
+                        >
+                          {initial}
+                        </div>
+                      )}
                       <div className="flex-1 min-w-0 pt-0.5">
                         <div className="flex flex-wrap items-baseline gap-2 gap-y-1 justify-between">
                           <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
