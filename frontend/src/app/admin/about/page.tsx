@@ -2,17 +2,30 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Save, Loader2 } from 'lucide-react';
+import { Save, Loader2, Plus, Trash2 } from 'lucide-react';
 import { getAbout, updateAbout, About } from '@/lib/api';
 import FileUpload from '@/components/FileUpload';
 
+const defaultStats = [
+  { value: '10+', label: 'Projets réalisés' },
+  { value: '15+', label: 'Compétences' },
+  { value: 'L3', label: 'Formations' },
+  { value: '100%', label: 'Créativité' },
+];
+
 export default function AdminAboutPage() {
   const [about, setAbout] = useState<About | null>(null);
+  const [stats, setStats] = useState<{ value: string; label: string }[]>(defaultStats);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    getAbout().then(setAbout).catch(() => {});
+    getAbout().then((data) => {
+      setAbout(data);
+      if (data.stats && data.stats.length > 0) {
+        setStats(data.stats);
+      }
+    }).catch(() => {});
   }, []);
 
   const handleSave = async () => {
@@ -24,6 +37,7 @@ export default function AdminAboutPage() {
         title: about.title,
         description: about.description,
         photoUrl: about.photoUrl || undefined,
+        stats,
       });
       setAbout(updated);
       setSaved(true);
@@ -34,6 +48,14 @@ export default function AdminAboutPage() {
       setSaving(false);
     }
   };
+
+  const updateStat = (index: number, field: 'value' | 'label', val: string) => {
+    setStats(stats.map((s, i) => i === index ? { ...s, [field]: val } : s));
+  };
+
+  const addStat = () => setStats([...stats, { value: '', label: '' }]);
+
+  const removeStat = (index: number) => setStats(stats.filter((_, i) => i !== index));
 
   if (!about) return <div className="animate-pulse h-96 rounded-2xl bg-card" />;
 
@@ -89,6 +111,44 @@ export default function AdminAboutPage() {
             rows={6}
             className="w-full px-4 py-3 rounded-xl bg-background border border-card-border focus:border-[var(--color-primary)] focus:outline-none transition-colors resize-none text-foreground"
           />
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <label className="text-sm font-medium">Statistiques</label>
+            <button
+              type="button"
+              onClick={addStat}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-card-border hover:bg-card transition-colors"
+            >
+              <Plus size={14} /> Ajouter
+            </button>
+          </div>
+          <div className="space-y-3">
+            {stats.map((stat, i) => (
+              <div key={i} className="flex gap-3 items-center">
+                <input
+                  value={stat.value}
+                  onChange={(e) => updateStat(i, 'value', e.target.value)}
+                  placeholder="Valeur (ex: 10+)"
+                  className="w-28 px-4 py-3 rounded-xl bg-background border border-card-border focus:border-[var(--color-primary)] focus:outline-none transition-colors text-foreground"
+                />
+                <input
+                  value={stat.label}
+                  onChange={(e) => updateStat(i, 'label', e.target.value)}
+                  placeholder="Libellé (ex: Projets réalisés)"
+                  className="flex-1 px-4 py-3 rounded-xl bg-background border border-card-border focus:border-[var(--color-primary)] focus:outline-none transition-colors text-foreground"
+                />
+                <button
+                  type="button"
+                  onClick={() => removeStat(i)}
+                  className="p-2.5 rounded-xl text-muted hover:text-red-400 hover:bg-red-400/10 transition-colors"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>

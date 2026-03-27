@@ -200,12 +200,12 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-6"
           >
-            {[
+            {(about?.stats && about.stats.length > 0 ? about.stats : [
               { label: 'Projets réalisés', value: '10+' },
               { label: 'Compétences', value: '15+' },
               { label: 'Formations', value: 'L3' },
               { label: 'Créativité', value: '100%' },
-            ].map((stat) => (
+            ]).map((stat) => (
               <div key={stat.label} className="text-center p-6 rounded-2xl bg-card border border-card-border">
                 <p className="text-3xl font-bold gradient-text">{stat.value}</p>
                 <p className="text-sm text-muted mt-2">{stat.label}</p>

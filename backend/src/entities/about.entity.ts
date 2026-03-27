@@ -16,4 +16,7 @@ export class About {
 
   @Column({ name: 'photo_url', nullable: true })
   photoUrl: string;
+
+  @Column({ type: 'jsonb', nullable: true, default: null })
+  stats: { value: string; label: string }[] | null;
 }

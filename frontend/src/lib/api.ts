@@ -22,6 +22,7 @@ export interface About {
   title: string;
   description: string;
   photoUrl: string | null;
+  stats: { value: string; label: string }[] | null;
 }
 
 export interface Project {
