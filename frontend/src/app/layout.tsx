@@ -4,6 +4,7 @@ import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import GlobalMouseBlob from "@/components/GlobalMouseBlob";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,8 +48,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
+          <GlobalMouseBlob />
           <Navbar />
-          <main className="flex-1 pt-20">{children}</main>
+          <main className="flex-1 pt-20 relative z-10">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

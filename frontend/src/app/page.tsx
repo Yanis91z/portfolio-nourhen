@@ -2,36 +2,9 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
 import { getAbout, About } from '@/lib/api';
-
-function GradientBlob() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      mouseX.set(e.clientX - 200);
-      mouseY.set(e.clientY - 200);
-    };
-    window.addEventListener('mousemove', handleMouse);
-    return () => window.removeEventListener('mousemove', handleMouse);
-  }, [mouseX, mouseY]);
-
-  return (
-    <motion.div
-      className="pointer-events-none fixed w-[400px] h-[400px] rounded-full opacity-20 blur-[100px] z-0"
-      style={{
-        x: springX,
-        y: springY,
-        background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
-      }}
-    />
-  );
-}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -52,8 +25,6 @@ export default function HomePage() {
 
   return (
     <>
-      <GradientBlob />
-
       <section ref={heroRef} className="relative min-h-[calc(100vh-5rem)] flex items-center">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="grid md:grid-cols-2 gap-12 items-center">
