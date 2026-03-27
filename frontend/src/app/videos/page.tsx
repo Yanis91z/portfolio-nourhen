@@ -84,7 +84,7 @@ export default function VideosPage() {
   return (
     <section className="py-12 relative">
       <AnimatedBlobs />
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ export default function VideosPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Mes <span className="gradient-text">Vidéos</span>
           </h1>
-          <p className="text-muted text-lg mb-12">
+          <p className="text-muted text-lg mb-12 max-w-2xl">
             Mes créations vidéo et contenus.
           </p>
         </motion.div>
@@ -105,7 +105,7 @@ export default function VideosPage() {
         ) : videos.length === 0 ? (
           <p className="text-muted text-center py-20">Aucune vidéo pour le moment.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center">
             {videos.map((video, i) => (
               <VideoCard key={video.id} video={video} index={i} />
             ))}
